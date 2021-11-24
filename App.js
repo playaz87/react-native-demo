@@ -6,15 +6,18 @@ import CompanyBanner from './Components/CompanyBanner';
 import BirthdayBanner from './Components/BirthdayBanner';
 import RecentPhotos from './Components/RecentPhotos';
 import BottomMenu from './Components/BottomMenu';
+import CompanyCulture from './Components/CompanyCulture';
 
 const App = () => {
-  const [appState, setAppState] = useState(defaultState);
+  const [appState, setAppState] = useState({...defaultState});
+  // console.log(defaultState);
   return (
     <View style={styles.appHeader}>
       <Header {...appState.user} />
       <CompanyBanner {...appState.company} />
-      <BirthdayBanner props={appState} />
+      <BirthdayBanner birthdays={appState.birthdays} />
       <RecentPhotos props={photos} />
+      <CompanyCulture />
       <View style={styles.footer}>
         <BottomMenu />
       </View>
@@ -50,24 +53,24 @@ const defaultState = {
       subscribers: 499,
       members: 333,
     },
-    birthdays: [
-      {
-        name: 'Alex',
-        social: '@Alex',
-        imgSrc: 'https://randomuser.me/api/portraits/med/men/75.jpg',
-      },
-      {
-        name: 'James',
-        social: '@James',
-        imgSrc: 'https://randomuser.me/api/portraits/med/men/76.jpg',
-      },
-      {
-        name: 'Kate',
-        social: '@Kate',
-        imgSrc: 'https://randomuser.me/api/portraits/med/women/77.jpg',
-      },
-    ],
   },
+  birthdays: [
+    {
+      name: 'Alex',
+      social: '@Alex',
+      imgSrc: 'https://randomuser.me/api/portraits/med/men/75.jpg',
+    },
+    {
+      name: 'James',
+      social: '@James',
+      imgSrc: 'https://randomuser.me/api/portraits/med/men/76.jpg',
+    },
+    {
+      name: 'Kate',
+      social: '@Kate',
+      imgSrc: 'https://randomuser.me/api/portraits/med/women/77.jpg',
+    },
+  ],
 };
 
 const photos = [

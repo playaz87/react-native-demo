@@ -2,13 +2,13 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import ProfileBoxVertical from './ProfileBoxVertical';
 
-const BirthdayBanner = (appState) => {
-  console.log(appState);
+const BirthdayBanner = props => {
+  const birthdays = props.birthdays;
   return (
     <View style={styles.birthdayWrapper}>
       <Text style={styles.textHeader}>Birthdays</Text>
       <View style={styles.profileBoxesWrapper}>
-        {appState.birthdays.map(person => {
+        {birthdays.map(person => {
           return <ProfileBoxVertical {...person} key={Math.random()} />;
         })}
       </View>

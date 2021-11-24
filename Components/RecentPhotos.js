@@ -6,7 +6,7 @@ const RecentPhotos = props => {
   const photos = props.props;
   return (
     <View style={styles.wrapper}>
-      <Text>Recent Photos</Text>
+      <Text style={styles.textHeader}>Recent Photos</Text>
       <View style={styles.imageWrapper}>
         {photos.map((src, i) => {
           return (
@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: '#a1a1a1',
     padding: 8,
+  },
+  textHeader: {
+    padding: 4,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   imageWrapper: {
     flexWrap: 'wrap',
