@@ -1,8 +1,9 @@
-import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const Header = ({imgSrc, name, social}) => {
+  const [alerts, setAlerts] = useState(false);
   return (
     <View style={styles.header}>
       <View style={styles.profileWrapperView}>
@@ -19,7 +20,13 @@ const Header = ({imgSrc, name, social}) => {
       </View>
       <View style={styles.viewIcons}>
         <Icon style={styles.icon} name="search" size={20} />
-        <Icon style={styles.icon} name="bell" size={20} />
+        <Pressable onPress={() => setAlerts(!alerts)}>
+          <Icon
+            style={styles.icon}
+            name={alerts ? 'bell' : 'bell-o'}
+            size={20}
+          />
+        </Pressable>
       </View>
     </View>
   );
@@ -57,6 +64,7 @@ const styles = StyleSheet.create({
   },
   viewIcons: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   icon: {
     paddingStart: 4,

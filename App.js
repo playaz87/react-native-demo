@@ -1,7 +1,6 @@
-
 import React, {useState} from 'react';
 import Header from './Components/Header';
-import {StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import CompanyBanner from './Components/CompanyBanner';
 import BirthdayBanner from './Components/BirthdayBanner';
 import RecentPhotos from './Components/RecentPhotos';
@@ -10,9 +9,8 @@ import CompanyCulture from './Components/CompanyCulture';
 
 const App = () => {
   const [appState, setAppState] = useState({...defaultState});
-  // console.log(defaultState);
   return (
-    <View style={styles.appHeader}>
+    <SafeAreaView style={styles.appHeader}>
       <Header {...appState.user} />
       <CompanyBanner {...appState.company} />
       <BirthdayBanner birthdays={appState.birthdays} />
@@ -21,13 +19,12 @@ const App = () => {
       <View style={styles.footer}>
         <BottomMenu />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   appHeader: {
-    paddingTop: 60,
     justifyContent: 'space-between',
   },
   footer: {
@@ -42,33 +39,37 @@ const defaultState = {
   user: {
     name: 'Alex',
     social: '@Alex',
-    imgSrc: 'https://randomuser.me/api/portraits/med/men/75.jpg',
+    imgSrc: 'https://randomuser.me/api/portraits/med/men/61.jpg',
   },
   company: {
     logoSrc:
       'https://images.freecreatives.com/wp-content/uploads/2015/04/logo007.png',
     stats: {
-      today: 510,
-      notices: 36,
-      subscribers: 499,
-      members: 333,
+      today: Math.round(Math.random() * 1000),
+      notices: Math.round(Math.random() * 100),
+      subscribers: Math.round(Math.random() * 1000),
+      members: Math.round(Math.random() * 100),
     },
   },
   birthdays: [
     {
       name: 'Alex',
       social: '@Alex',
-      imgSrc: 'https://randomuser.me/api/portraits/med/men/75.jpg',
+      imgSrc: 'https://randomuser.me/api/portraits/med/men/61.jpg',
     },
     {
       name: 'James',
       social: '@James',
-      imgSrc: 'https://randomuser.me/api/portraits/med/men/76.jpg',
+      imgSrc: `https://randomuser.me/api/portraits/med/men/${Math.round(
+        Math.random() * 100,
+      )}.jpg`,
     },
     {
       name: 'Kate',
       social: '@Kate',
-      imgSrc: 'https://randomuser.me/api/portraits/med/women/77.jpg',
+      imgSrc: `https://randomuser.me/api/portraits/med/women/${Math.round(
+        Math.random() * 100,
+      )}.jpg`,
     },
   ],
 };

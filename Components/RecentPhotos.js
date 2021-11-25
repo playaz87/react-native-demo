@@ -1,5 +1,14 @@
 import React, {useState} from 'react';
-import {Text, StyleSheet, View, Image, Modal, Pressable} from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  Modal,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
+
 const RecentPhotos = props => {
   const [modalVisible, setModalVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);

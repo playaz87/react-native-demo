@@ -1,19 +1,10 @@
-import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  SafeAreaView,
-  FlatList,
-  Dimensions,
-} from 'react-native';
-import {Card, ListItem, Button} from 'react-native-elements';
+import React from 'react';
+import {View, Text, StyleSheet, FlatList, Dimensions} from 'react-native';
+import {Card} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const CompanyCulture = () => {
   const SCREEN_WIDTH = Dimensions.get('window').width;
-  const [data, setData] = useState([...testData]);
   const renderItem = ({item}) => {
     return (
       <View>
@@ -39,7 +30,8 @@ const CompanyCulture = () => {
     );
   };
   return (
-    <SafeAreaView style={styles.safeAreaContainer}>
+    <View style={styles.safeAreaContainer}>
+      <Text style={styles.textHeader}>Company Culture</Text>
       <FlatList
         data={testData}
         keyExtractor={item => item.id}
@@ -47,7 +39,7 @@ const CompanyCulture = () => {
         style={{width: SCREEN_WIDTH + 5, height: '100%'}}
         renderItem={item => renderItem(item)}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -68,6 +60,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.8,
     shadowRadius: 2,
+    padding: 8,
   },
   cardImage: {
     width: '100%',
@@ -86,6 +79,12 @@ const styles = StyleSheet.create({
   statsText: {
     paddingLeft: 4,
   },
+  textHeader: {
+    paddingLeft: 12,
+    paddingTop: 12,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
 
 const testData = [
@@ -93,25 +92,25 @@ const testData = [
     imgSrc: 'https://source.unsplash.com/random',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore',
     id: 1,
-    views: 10,
-    comments: 15,
-    hearts: 20,
+    views: Math.round(Math.random() * 1000),
+    comments: Math.round(Math.random() * 100),
+    hearts: Math.round(Math.random() * 100),
   },
   {
     imgSrc: 'https://source.unsplash.com/random',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore',
     id: 2,
-    views: 44,
-    comments: 32,
-    hearts: 34,
+    views: Math.round(Math.random() * 1000),
+    comments: Math.round(Math.random() * 100),
+    hearts: Math.round(Math.random() * 100),
   },
   {
     imgSrc: 'https://source.unsplash.com/random',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore',
     id: 3,
-    views: 1212,
-    comments: 233,
-    hearts: 112,
+    views: Math.round(Math.random() * 1000),
+    comments: Math.round(Math.random() * 100),
+    hearts: Math.round(Math.random() * 100),
   },
 ];
 export default CompanyCulture;
